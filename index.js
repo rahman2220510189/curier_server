@@ -35,11 +35,13 @@ const CONFIG = {
 // MongoDB Client
 let db;
 let mongoClient;
-
+ const cleanClientUrl = CONFIG.CLIENT_URL.endsWith('/') 
+  ? CONFIG.CLIENT_URL.slice(0, -1) 
+  : CONFIG.CLIENT_URL;
 // Socket.IO
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'https://curier-client.vercel.app',  
+    origin: cleanClientUrl,  
     credentials: true
   }
 });
@@ -68,7 +70,7 @@ app.use(helmet());
 
 
 app.use(cors({
-  origin: 'https://curier-client.vercel.app',  
+  origin: cleanClientUrl,  
   credentials: true
 }));
 app.use(express.json());
