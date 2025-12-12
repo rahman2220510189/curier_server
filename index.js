@@ -29,7 +29,7 @@ const CONFIG = {
   SMTP_PORT: parseInt(process.env.SMTP_PORT) || 587,
   SMTP_USER: process.env.SMTP_USER || '',
   SMTP_PASS: process.env.SMTP_PASS || '',
-  CLIENT_URL: process.env.CLIENT_URL || 'https://curier-client.vercel.app/'
+  CLIENT_URL: process.env.CLIENT_URL || 'https://curier-client.vercel.app'
 };
 
 // MongoDB Client
@@ -39,7 +39,7 @@ let mongoClient;
 // Socket.IO
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'https://curier-client.vercel.app/',  
+    origin: 'https://curier-client.vercel.app',  
     credentials: true
   }
 });
@@ -68,7 +68,7 @@ app.use(helmet());
 
 
 app.use(cors({
-  origin: 'https://curier-client.vercel.app/',  
+  origin: 'https://curier-client.vercel.app',  
   credentials: true
 }));
 app.use(express.json());
