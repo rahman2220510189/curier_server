@@ -1,55 +1,179 @@
-CourierTrack Pro: MERN Stack Parcel Management SystemThis project is a comprehensive Courier Tracking and Parcel Management System built using the MERN stack (MongoDB, Express, React, Node.js) with real-time 
-updates via Socket.IO. It is designed to facilitate parcel booking for customers, status updates for agents, and monitoring/reporting for administrators.📝 Table of ContentsFeaturesTechnology StackProject StructureSetup 
-and InstallationDeployment LinksDemo Credentials1. FeaturesThe system implements a robust Role-Based Access Control (RBAC) model with three primary roles: Admin, Delivery Agent, 
-and Customer.RoleKey FeaturesCustomer* Booking: Book new parcel pickups with details (addresses, size/type, COD/Prepaid). * Tracking: Track parcels in real-time (live status and map location).
-* History: View all past and current booking history.Delivery Agent* Assignments: View a list of all assigned parcels and customer details. * Status Update: Update parcel status (Picked Up, In Transit, Delivered, Failed) with corresponding location logging.
-* Live Tracking: Sends real-time GPS coordinates of the current location to the tracking system.Admin* Dashboard: View daily metrics (bookings, COD collection, deliveries) and 7-day booking trends.
-* * Management: View/manage all users and parcels. * Assignment: Assign parcels to available delivery agents, triggering email notifications. * Reporting: Export detailed booking reports (CSV) and view COD collection summaries per agent.2.
-  
-* Technology StackLayerTechnologiesKey ModulesBackendNode.js, Express, MongoDB (Native)jsonwebtoken, bcryptjs, socket.io, nodemailer, cors, helmetFrontendReact.js,
-  Tailwind CSSreact-router-dom, axios (with Interceptors for refresh token), socket.io-client, lucide-reactDatabaseMongoDB Atlas (NoSQL)MongoDB Native Driver for efficient querying and indexing.AdvancedReal-time Communication,
-*   Email Notifications, QR Code Generation3. Project StructureThe project is structured into standard frontend and backend directories for clear separation of concerns.
+# 📦 CourierTrack Pro
+### A Production-Grade MERN Stack Parcel Management System
+
+> Real-time parcel tracking, role-based access control, live GPS, and automated email notifications — all in one platform.
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20App-2563eb?style=for-the-badge)](https://curier-client.vercel.app/)
+[![Backend API](https://img.shields.io/badge/Backend%20API-Render-10b981?style=for-the-badge)](https://curier-server.onrender.com)
+[![Client Repo](https://img.shields.io/badge/GitHub-Client%20Repo-181717?style=for-the-badge&logo=github)](https://github.com/rahman2220510189/curier_client)
+[![Server Repo](https://img.shields.io/badge/GitHub-Server%20Repo-181717?style=for-the-badge&logo=github)](https://github.com/rahman2220510189/curier_server)
+
+---
+
+## 🚀 What Is This?
+
+CourierTrack Pro is a **full-stack courier and parcel management platform** built entirely solo using the MERN stack. It handles the complete lifecycle of a parcel — from customer booking to live agent tracking to admin reporting — with real-time updates powered by Socket.IO.
+
+This is not a tutorial clone. Every feature was designed, architected, and deployed from scratch to solve real logistics challenges.
+
+---
+
+## ✨ Core Features
+
+### 👤 Customer Portal
+- Book parcel pickups with full address details, size/type selection, and COD or Prepaid payment method
+- Track parcels in **real-time** with live status updates and map location
+- View complete booking history with status timeline
+
+### 🚴 Delivery Agent Portal
+- View all assigned parcels with customer details
+- Update parcel status: `Picked Up → In Transit → Delivered / Failed`
+- Send **live GPS coordinates** to the tracking system in real time
+
+### 🛡️ Admin Dashboard
+- Monitor daily metrics: bookings, COD collection, deliveries
+- View **7-day booking trend charts**
+- Assign parcels to available agents with automatic **email notifications**
+- Export detailed booking reports as **CSV**
+- View per-agent COD collection summaries
+- Manage all users and parcels from a single panel
+
+---
+
+## 🧰 Technology Stack
+
+| Layer | Technologies |
+|-------|-------------|
+| **Frontend** | React.js, Tailwind CSS, React Router, Axios (with Interceptors), Socket.IO Client, Lucide React |
+| **Backend** | Node.js, Express.js, MongoDB Native Driver, Socket.IO, Nodemailer, JWT, bcryptjs, Helmet |
+| **Database** | MongoDB Atlas (NoSQL) with efficient indexing |
+| **Advanced** | Real-time communication, Email notifications, QR Code generation, Refresh token rotation |
+
+---
+
+## 🏗️ Architecture Overview
+
+```
 courier-tracking-project/
 ├── courier-backend/
-│   ├── index.js          # Main server file (Routes, DB, Middleware, Socket.IO)
-│   └── .env              # Environment variables
+│   ├── index.js              # Server entry: Routes, DB, Middleware, Socket.IO
+│   └── .env                  # Environment configuration
 │
 └── courier-tracking-frontend/
-    ├── src/
-    │   ├── components/   # UI components grouped by function (Admin, Customer, Layout)
-    │   ├── context/      # AuthContext
-    │   ├── hooks/        # useAuth, useSocket
-    │   ├── services/     # api.js (Axios), socket.js (Socket client)
-    │   └── utils/        # helpers.js (utility functions)
-    └── package.json
-4. Setup and InstallationFollow these steps to set up the project locally.4.1. Backend SetupClone the repository:Bashgit clone <your-repo-link>
-cd courier-backend
-Install dependencies:Bashnpm install
-Configure environment variables:Create a file named .env in the courier-backend directory and add the following configuration:Code snippetPORT=5000
+    └── src/
+        ├── components/       # UI components (Admin, Customer, Layout)
+        ├── context/          # AuthContext (global auth state)
+        ├── hooks/            # useAuth, useSocket
+        ├── services/         # api.js (Axios), socket.js (Socket client)
+        └── utils/            # helpers.js
+```
 
-# MongoDB Atlas Connection
+---
+
+## 🔐 Demo Credentials
+
+Try all three roles live — no signup required:
+
+| Role | Email | Password |
+|------|-------|----------|
+| **Admin** | admin@example.com | admin123 |
+| **Agent** | agent@example.com | agent123 |
+| **Customer** | customer@example.com | customer123 |
+
+🔗 **[Open Live App](https://curier-client.vercel.app/)**
+
+---
+
+## ⚙️ Local Setup
+
+### Prerequisites
+- Node.js v18+
+- MongoDB Atlas account
+- Gmail account with App Password (for email notifications)
+
+### 1. Clone the repositories
+
+```bash
+# Client
+git clone https://github.com/rahman2220510189/curier_client
+cd curier_client
+
+# Server
+git clone https://github.com/rahman2220510189/curier_server
+cd curier_server
+```
+
+### 2. Backend Setup
+
+```bash
+cd courier-backend
+npm install
+```
+
+Create a `.env` file:
+
+```env
+PORT=5000
+
+# MongoDB Atlas
 DB_USER=your_mongo_user
 DB_PASS=your_mongo_pass
-# Get your MONGO_URI from Atlas (Replace cluster0 with your cluster name)
-MONGO_URI="mongodb+srv://${DB_USER}:${DB_PASS}@cluster0.cjuyyb2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0" 
+MONGO_URI="mongodb+srv://${DB_USER}:${DB_PASS}@cluster0.cjuyyb2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-# JWT Secrets (Change these for production)
-JWT_SECRET=your_jwt_secret_change_in_production
-JWT_REFRESH_SECRET=your_refresh_secret_change_in_production
+# JWT
+JWT_SECRET=your_jwt_secret
+JWT_REFRESH_SECRET=your_refresh_secret
 
-# Email Configuration (for Nodemailer/Gmail App Password)
+# Email (Gmail App Password)
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
-SMTP_USER=naymurrahmanriyad4@gmail.com
-SMTP_PASS=your_16_digit_app_password 
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_16_digit_app_password
 
-# Frontend URL (for CORS and Email Links)
+# Frontend URL
 CLIENT_URL=http://localhost:5173
-Note on SMTP: Use a Google App Password for SMTP_PASS, not your regular email password. Ensure 2FA is enabled on your Google account.Start the server:Bashnpm start  # Runs 'node index.js' or configured start script
-4.2. Frontend SetupNavigate to the frontend directory:Bashcd ../courier-tracking-frontend
-Install dependencies:Bashnpm install
-Configure environment variables:Create a file named .env or .env.local (depending on your React setup) and add the API URLs:Code snippet# Points to your running backend server (must match port)
+```
+
+> **Note:** Use a Gmail App Password for `SMTP_PASS`. Enable 2FA on your Google account first.
+
+```bash
+npm start
+```
+
+### 3. Frontend Setup
+
+```bash
+cd courier-tracking-frontend
+npm install
+```
+
+Create a `.env.local` file:
+
+```env
 REACT_APP_API_URL=http://localhost:5000/api
 REACT_APP_SOCKET_URL=http://localhost:5000
-Start the client:Bashnpm run dev  # Or npm start
-5. Deployment LinksEnvironmentEndpointLinkFrontend (Client)Web Applicationhttps://curier-client.vercel.appBackend (Server)API Base URLhttps://curier-server.onrender.comBackend Health CheckVerificationhttps://curier-server.onrender.com/health6. Demo CredentialsYou can use these accounts to test the application's RBAC and features:RoleEmailPasswordAdminadmin@example.comadmin123Agentagent@example.comagent123Customercustomer@example.comcustomer123Project maintained by: [Your Name/Company]
+```
+
+```bash
+npm run dev
+```
+
+---
+
+## 🌐 Deployment
+
+| Environment | URL |
+|-------------|-----|
+| Frontend (Vercel) | https://curier-client.vercel.app/ |
+| Backend API (Render) | https://curier-server.onrender.com |
+| Backend Health Check | https://curier-server.onrender.com/health |
+
+---
+
+## 👨‍💻 Built By
+
+**Md. Naymur Rahman**
+Full Stack Developer | React · Node.js · Python · AI
+
+[![GitHub](https://img.shields.io/badge/GitHub-rahman2220510189-181717?style=flat&logo=github)](https://github.com/rahman2220510189)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-md--naymur--rahman-0077b5?style=flat&logo=linkedin)](https://linkedin.com/in/md-naymur-rahman-5101894d)
